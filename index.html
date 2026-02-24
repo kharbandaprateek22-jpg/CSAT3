@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSAT Galaxy Launch</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at bottom, #0b0c2a, #000000 80%);
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 28px;
+}
+
+.galaxy {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    animation: moveStars 5s linear infinite;
+}
+
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(100vh); }
+}
+
+.rocket-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: bottom 4s ease-in-out;
+    z-index: 2;
+}
+
+.rocket {
+    font-size: 60px;
+}
+
+.flame {
+    font-size: 25px;
+    animation: flame 0.2s infinite alternate;
+}
+
+@keyframes flame {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
+.csat-scale {
+    position: absolute;
+    right: 30px;
+    bottom: 50px;
+    height: 400px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    font-size: 18px;
+    z-index: 2;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 18px;
+    background: #ff9800;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ffc107;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🚀 Launch to 5.0 CSAT in the Galaxy</h1>
+
+<div class="galaxy" id="galaxy"></div>
+
+<div class="rocket-container" id="rocketContainer">
+    <div class="rocket">🚀</div>
+    <div class="flame">🔥</div>
+</div>
+
+<div class="csat-scale">
+    <div>5.0 ⭐⭐⭐⭐⭐</div>
+    <div>4.0 ⭐⭐⭐⭐</div>
+    <div>3.0 ⭐⭐⭐</div>
+    <div>2.0 ⭐⭐</div>
+    <div>1.0 ⭐</div>
+</div>
+
+<button onclick="launchRocket()">Launch to 5.0</button>
+
+<script>
+// Create stars
+const galaxy = document.getElementById("galaxy");
+
+for (let i = 0; i < 150; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    galaxy.appendChild(star);
+}
+
+function launchRocket() {
+    document.getElementById("rocketContainer").style.bottom = "75%";
+}
+</script>
+
+</body>
+</html>
